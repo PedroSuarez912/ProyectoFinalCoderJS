@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    
+    <title>Document</title>
+</head>
+<body>
+
+    <header class="Header">
+        <img src="./fotos/logo.jpg" alt="">
+        <h1>Los Muebles De Pablo</h1>
+        <img src="./fotos/logo.jpg" alt="">
+    </header>
+
+    <header class="subHeader">
+        <a href="#seccion1">quienes somos?</a>
+        <a href="#Restauraciones">restauraciones</a>
+        <a href="#">Ubicacion</a>
+        <a href="#tiendadeslizable">Tienda</a>
+    </header>
+
+
+    <section class="seccion" id="seccion1">
+        <div>
+            <h2>Quienes Somos?</h2>
+            <p>Somos "Los Muebles de Pablo" una empresa con mas de 26 años en en el mercado de la compra y venta de muebles. </p>
+        </div>    
+        <img src="./fotos/foto123-1.jpg" alt="">
+            
+    </section>
+
+    <section class="seccion" id="tiendadeslizable">
+        <div class = "div_titulo">
+
+            <div class = "div-titulo-contenedor">
+                <h2>Los Muebles de Pablo: <b>Tienda</b></h2>
+                <input id="inBusqueda" type="search" placeholder="Buscar...">
+
+                <div class="div_externo_carrito">
+                    <div>
+                        <button id="botonCarrito"><img src="./fotos/carrito.png" alt=""><p id="contadorCarrito" class="puntitoOculto"></p></button>
+                </div>
+            </div>
+
+        </div>
+
+        <nav id="nav">
+
+        </nav>
+
+    </section>
+
+    <section class="seccionRestauraciones" id = "Restauraciones">
+        <h2>Restauraciones</h2>
+    </section>
+
+
+    <!-- en el pie de la pagina van solo las redes y un mail a lo sumo -->
+</body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="./js/modalCarrito.js" type = "module"></script>
+<script src="./js/jsmueblespablo.js" type = "module"></script>
+<script src="./js/stock.js" type = "module"></script>
+<!-- <script src="./busqueda.js" type = "module"></script> -->
+<link rel="stylesheet" href="./cssmueblespablo.css">
+<style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');</style>
+</html>
