@@ -13,9 +13,9 @@ export function contadorParaBotonCarrito(){
 
 export function comprarCarrito(listCarrito){
   Swal.fire({
-    title:"success",
-    text:"blabla",
-    icon:"error",
+    title:"Listo!!!",
+    text:"Gracias por comprar en Los Muebles De Pablo",
+    icon:"success",
     confirmButtonText:"cerrar",
   });
   carrito = [];
