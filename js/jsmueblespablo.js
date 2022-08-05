@@ -83,26 +83,31 @@ const busqueda = () =>{
 
     navTienda.innerHTML = " "
 
-    for(const i of tiendaFiltrada){
+    tiendaFiltrada.forEach(i => {
       let carta = document.createElement("div");
       carta.className = "contenedor-carta";
       carta.innerHTML = `
           <div class="carta">
               <h2>${i.mueble}</h2>
-              <img src=${i.imagen} alt="">
+              <img id="img${i.id}" src=${i.imagen} alt="">
               <p>${i.precio}<p>
-              <button id="B${i.id}">Añadir al carrito!</button>
+              <button id="B${i.id}" class="botonDeCarta">Añadir al carrito!</button>
           </div>`;
       navTienda.appendChild(carta);
 
       const botonAñadirCarro = document.getElementById(`B${i.id}`);
-      
       botonAñadirCarro.addEventListener("click",()=>{
-      añadir_aCarrito(i.id, i.mueble)
+      añadir_aCarrito(i.id, i.mueble);
       })
-    }
- }
-}
+    })
+    tiendaFiltrada.forEach(i =>{
+      let  imgClickeablBusqueda = document.getElementById(`img${i.id}`);
+      imgClickeablBusqueda.addEventListener("click",()=>{
+      abrirImagen(i);
+      });
+    });
+ };
+};
 
 //vars a utilizar
 let carrito = [];
