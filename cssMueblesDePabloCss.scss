@@ -292,3 +292,102 @@
     }
 }
 
+//items del modal
+.divCarrito{
+    height: 70px;
+    border: solid 3px black;
+    border-radius: 2px;
+    width: 97.75%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px 0px;
+    background-color: #cd9cf2;
+
+    p{
+        text-align: center;
+        color:white;  
+    }
+    img{
+        height: 90%;
+        border-radius: 10%;
+    }
+    button{
+        padding: 0.63em 1em;
+        border-radius: 50%;
+        color: white;
+        background:none;
+        border: none;
+    }
+    button:hover{
+        border:solid white 1px; 
+    }
+    .modalCerrado{
+        opacity: 0%;
+    }
+}
+//
+
+//modal de imgs
+.conteinerconteiner_modalDeImg{
+    position: fixed;
+    background-color: #cd9cf273;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .conteiner_modalDeImg{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border-radius:5%;
+
+        p{
+            font-size: 20px;
+            margin-top: 8px;
+        }
+
+        .containerModal_tituloBoton{
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+
+            h2{
+                margin: 10px 7%;
+            }
+            .botonCerrarModal{
+                cursor: pointer;
+                margin: 10px 6%;
+            }
+        }
+        .producto{
+            width: 90%;
+            border-radius: 5%;
+            box-shadow: 1px 1px 7px black;
+        }
+    }
+}
+//en proceso
+.seccionRestauraciones{
+    height: 700px;
+}
+//
+//toastify
+.info{
+    background-color: aquamarine;
+    position: fixed;
+    padding: 0.3em 1em;
+    border-radius: 10%;
+    right:2%;
+    cursor:pointer
+}
+.info:hover{
+    background-color:whitesmoke ;
+    color: #cd9cf2;
+    border: #f6f3ff 2px solid;
+}
