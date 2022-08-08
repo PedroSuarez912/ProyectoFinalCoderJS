@@ -293,6 +293,10 @@ top: 1px;
     height: 90%;
     border-radius: 10%;
 }
+.divCarrito img:hover{
+    box-shadow: #fdfdfd 2px 1px 10px;
+    cursor: pointer;
+}
 .divCarrito button{
     padding: 0.63em 1em;
     border-radius: 50%;
