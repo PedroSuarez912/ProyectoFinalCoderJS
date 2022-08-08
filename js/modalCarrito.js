@@ -1,4 +1,5 @@
 import{carrito,tienda,comprarCarrito,cantidadEnCarrito,contadorParaBotonCarrito} from "./jsmueblespablo.js" ;
+import { abrirImagen } from "./modalImgs.js";
 import{listaProductos} from "./stock.js" ;
 
 function quitarElementoCarrito(i) {
@@ -35,25 +36,27 @@ export function hacerListaCarrito(){
     carrito.forEach( i => {
         let divCarrito = document.createElement("div");
         divCarrito.innerHTML = `
-            
-                <img src="${i.imagen}" alt="">
+                <img id="imgCarrito${i.id}" src="${i.imagen}" alt="">
                 <div>
                     <p>${i.mueble}</p>
                     <p>${i.precio}</p>
                 </div>
                 <button id="${i.id}Quitar">X</button>
-            
         `;
         divCarrito.classList.add("divCarrito");
         carrito_listado.appendChild(divCarrito);
         
         //botones para quitar
         const botonQuitarCarrito = document.getElementById(`${i.id}Quitar`);
-        
+        const imgCarrito = document.getElementById(`imgCarrito${i.id}`);
         //evento quitardelcarrito
         botonQuitarCarrito.addEventListener("click",()=>{
             quitarElementoCarrito(i);
         })
+        //evento abrir modal de img
+        imgCarrito.addEventListener("click",()=>{
+            abrirImagen(i);
+        });
     } );
 };
 
