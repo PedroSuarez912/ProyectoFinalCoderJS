@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);
+  background-image: linear-gradient(to top, #49c5e8 0%, rgba(255, 255, 255, 0.7254901961) 100%);
 }
 
 .Header {
@@ -39,14 +39,18 @@
 }
 
 #seccion1 {
-  background-color: rgba(0, 255, 255, 0.474);
+  background-color: bisque;
   display: flex;
   align-items: center;
   width: 90%;
   height: 500px;
+  border-left: #3A3A3A 2px solid;
+  border-right: #3A3A3A 2px solid;
+  border-bottom: #3A3A3A 2px solid;
+  box-sizing: border-box;
 }
 #seccion1 div {
-  background-color: rgb(113, 193, 193);
+  background-color: bisque;
   width: 50%;
   height: 100%;
   display: flex;
@@ -77,6 +81,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-left: #3A3A3A 2px solid;
+  border-right: #3A3A3A 2px solid;
+  border-bottom: #3A3A3A 2px solid;
+  box-sizing: border-box;
 }
 #tiendadeslizable .div_titulo {
   text-align: center;
@@ -139,7 +147,7 @@
 }
 #tiendadeslizable nav .contenedor-carta {
   width: 250px;
-  height: 89%;
+  height: 90%;
   background-color: rgba(0, 0, 0, 0.63);
   border-radius: 20px;
   display: flex;
@@ -177,9 +185,11 @@
   position: relative;
   background-color: black;
   border-radius: 4em;
+  border: 2px solid white;
+  box-sizing: border-box;
   font-size: 16px;
   color: white;
-  padding: 0.6em 1.4em;
+  padding: 0.5em 1.2em;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -187,13 +197,13 @@
           user-select: none;
   text-align: center;
   text-decoration: none;
-  cursor: pointer;
   transition-duration: 0.4s;
   -webkit-transition-duration: 0.4s; /* Safari */
 }
 #tiendadeslizable nav .contenedor-carta .carta .botonDeCarta:hover {
   transition-duration: 0.1s;
-  background-color: #3A3A3A;
+  background-color: #ffffff;
+  color: black;
 }
 #tiendadeslizable nav .contenedor-carta .carta .botonDeCarta:after {
   content: "";
@@ -211,15 +221,9 @@
 #tiendadeslizable nav .contenedor-carta .carta .botonDeCarta:active {
   top: 1px;
 }
-#tiendadeslizable nav ::-webkit-scrollbar {
-  border: #401660 2px solid;
-  background-color: white;
-}
-#tiendadeslizable nav ::-webkit-scrollbar-thumb {
-  background-color: #3A3A3A;
-}
 
 .modalAbierto {
+  transition: right 2s;
   position: fixed;
   width: 350px;
   height: 100%;
@@ -265,6 +269,11 @@
 .modalAbierto #boton_comprar_carrito:active {
   padding: 1px 1px;
 }
+.modalAbierto #carrito_en_si {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .divCarrito {
   height: 70px;
@@ -274,7 +283,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 10px 0px;
+  margin: 5px 0px;
   background-color: #cd9cf2;
 }
 .divCarrito p {
@@ -295,8 +304,10 @@
   color: white;
   background: none;
   border: none;
+  transition-duration: 1s;
 }
 .divCarrito button:hover {
+  transition-duration: 1s;
   border: solid white 1px;
 }
 .divCarrito .modalCerrado {
@@ -343,8 +354,52 @@
   box-shadow: 1px 1px 7px black;
 }
 
-.seccionRestauraciones {
-  height: 700px;
+.restauraciones {
+  background-color: bisque;
+  height: 590px;
+  width: 90%;
+  border: #3A3A3A 2px solid;
+  border-top: 0px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.restauraciones .tituloRestauraciones {
+  height: 20%;
+  display: flex;
+  align-items: center;
+}
+.restauraciones .tituloRestauraciones h2 {
+  font-size: 38px;
+}
+.restauraciones .restauracionesEnSi {
+  display: flex;
+  height: 100%;
+}
+.restauraciones .restauracionesEnSi .parrafo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 60%;
+}
+.restauraciones .restauracionesEnSi .parrafo p {
+  font-size: 27px;
+  width: 50%;
+  margin-bottom: 70px;
+}
+.restauraciones .restauracionesEnSi .imagen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.restauraciones .restauracionesEnSi .imagen img {
+  margin-bottom: 70px;
+  height: 80%;
 }
 
 .info {
@@ -360,4 +415,13 @@
   background-color: whitesmoke;
   color: #cd9cf2;
   border: #f6f3ff 2px solid;
+}
+
+::-webkit-scrollbar {
+  border: #401660 2px solid;
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3A3A3A;
 }/*# sourceMappingURL=cssMueblesDePabloCss.css.map */

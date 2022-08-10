@@ -11,7 +11,7 @@ export function contadorParaBotonCarrito(){
   }
 };
 
-export function comprarCarrito(listCarrito){
+export function comprarCarrito(){
   Swal.fire({
     title:"Listo!!!",
     text:"Gracias por comprar en Los Muebles De Pablo",
@@ -20,13 +20,9 @@ export function comprarCarrito(listCarrito){
   });
   carrito = [];
   contadorParaBotonCarrito();
-
 };
 
-function añadir_aCarrito(id,mueble){
-  //sweetalert
-  
-  //
+function añadir_aCarrito(id){
   let carriteado = listaProductos.find(i => i.id == id);
   carriteado.meterEnCarrito();
   carrito.push(carriteado);
@@ -79,10 +75,9 @@ const busqueda = () =>{
     tienda(listaProductos);
   }else{
 
-    let tiendaFiltrada = listaProductos.filter( i => i.mueble.toLowerCase() == inputBusqueda.value.toLowerCase() && i.carrito == false)
+    let tiendaFiltrada = listaProductos.filter( i => i.mueble.toLowerCase().includes(inputBusqueda.value.toLowerCase()) && i.carrito == false)
 
     navTienda.innerHTML = " "
-
     tiendaFiltrada.forEach(i => {
       let carta = document.createElement("div");
       carta.className = "contenedor-carta";
@@ -112,7 +107,7 @@ const busqueda = () =>{
 //vars a utilizar
 let carrito = [];
 const navTienda =  document.getElementById("nav");
-var tiendaFiltrada = [];
+
 let cantidadEnCarrito = document.getElementById("contadorCarrito"); 
 
 // llamo al boton x su id y le agrego un listener
@@ -126,9 +121,3 @@ inputBusqueda.addEventListener("input", () => {
 tienda(listaProductos);
 
 export{carrito,cantidadEnCarrito,};
-
-//notas:
-/*Quiero hacer que cada img cuando la clickee se abra y se haga mas grande con un modal. No me va a dar tiempo para hacerlo pero bueno jajaj 
-ya lo voy a agarrar
-DIOS se acaba de volver a buggear, habia debuggeado que el carrito se me pegaba al final de la pagina pero me volvio a pasar
-*/
