@@ -223,7 +223,6 @@
 }
 
 .modalAbierto {
-  transition: right 2s;
   position: fixed;
   width: 350px;
   height: 100%;
