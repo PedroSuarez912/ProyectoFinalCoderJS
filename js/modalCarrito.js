@@ -1,4 +1,4 @@
-import{carrito,tienda,comprarCarrito,cantidadEnCarrito,contadorParaBotonCarrito} from "./jsmueblespablo.js" ;
+import{carrito,tienda,comprarCarrito,contadorParaBotonCarrito} from "./jsmueblespablo.js" ;
 import { abrirImagen } from "./modalImgs.js";
 import{listaProductos} from "./stock.js" ;
 

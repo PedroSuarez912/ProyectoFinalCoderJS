@@ -1,0 +1,164 @@
+[
+    {
+        "id": 1,
+        "mueble": "Comoda Americana",
+        "imagen": "./fotos/producto1.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "10000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 2,
+        "mueble": "Comoda francesa",
+        "imagen": "./fotos/producto2.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "15000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 3,
+        "mueble": "Mesa de Luz",
+        "imagen": "./fotos/producto3.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "14000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 4,
+        "mueble": "Mesa ratona",
+        "imagen": "./fotos/producto4.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "12000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 5,
+        "mueble": "Espejo Español",
+        "imagen": "./fotos/producto5.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "18000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 6,
+        "mueble": "Placard romano",
+        "imagen": "./fotos/producto6.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "10000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 7,
+        "mueble": "Sillon italiano",
+        "imagen": "./fotos/producto7.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "9000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 8,
+        "mueble": "cama francesa",
+        "imagen": "./fotos/producto8.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "5000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 9,
+        "mueble": "cama austriaca",
+        "imagen": "./fotos/producto9.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "7500$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 10,
+        "mueble": "Comoda Americana",
+        "imagen": "./fotos/producto1.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "10000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 11,
+        "mueble": "Comoda francesa",
+        "imagen": "./fotos/producto2.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "15000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 12,
+        "mueble": "Mesa de Luz",
+        "imagen": "./fotos/producto3.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "14000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 13,
+        "mueble": "Mesa ratona",
+        "imagen": "./fotos/producto4.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "12000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 14,
+        "mueble": "Espejo Español",
+        "imagen": "./fotos/producto5.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "18000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 15,
+        "mueble": "Placard romano",
+        "imagen": "./fotos/producto6.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "10000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 16,
+        "mueble": "Sillon italiano",
+        "imagen": "./fotos/producto7.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "9000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 17,
+        "mueble": "cama francesa",
+        "imagen": "./fotos/producto8.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "5000$",
+        "vendido": false,
+        "carrito": false
+    },
+    {
+        "id": 18,
+        "mueble": "cama austriaca",
+        "imagen": "./fotos/producto9.jpg",
+        "categoria": "mueble de dormitorio",
+        "precio": "7500$",
+        "vendido": false,
+        "carrito": false
+    }
+]

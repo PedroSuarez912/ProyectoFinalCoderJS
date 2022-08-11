@@ -117,7 +117,17 @@ inputBusqueda.addEventListener("input", () => {
 })
 
 //codigo
+const fetcheado = async() =>{
+  try {
+    const fetchDeBD = await fetch("js/stock.json");
+    const listBD =await fetchDeBD.json();
+    tienda(listBD);
+    return listBD;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-tienda(listaProductos);
+fetcheado();
 
-export{carrito,cantidadEnCarrito,};
+export{carrito,cantidadEnCarrito};
