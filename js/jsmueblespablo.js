@@ -1,4 +1,4 @@
-import {listaProductos,} from "./stock.js";
+/* import {listaProductos,} from "./stock.js"; */
 import{hacerListaCarrito,modalCarrito} from "./modalCarrito.js";
 import { abrirImagen } from "./modalImgs.js";
 //funciones a utilizar
@@ -22,11 +22,11 @@ export function comprarCarrito(){
   contadorParaBotonCarrito();
 };
 
-function añadir_aCarrito(id){
-  let carriteado = listaProductos.find(i => i.id == id);
+function añadir_aCarrito(id,listaDeProductos){
+  let carriteado = listaDeProductos.find(i => i.id == id);
   carriteado.meterEnCarrito();
   carrito.push(carriteado);
-  tienda(listaProductos);
+  tienda(listaDeProductos);
   if(modalCarrito.className == "modalAbierto"){
     hacerListaCarrito();}
   contadorParaBotonCarrito();
@@ -58,7 +58,7 @@ export function tienda(listaDeProductos){
   productosEnVenta.forEach((i) => {
     const botonAñadirCarro = document.getElementById(`B${i.id}A`);
     botonAñadirCarro.addEventListener("click",()=>{
-      añadir_aCarrito(i.id, i.mueble)
+      añadir_aCarrito(i.id, listaDeProductos)
       Toastify({
         duration:1200,
         text: "Añadiste un producto a tu carrito!",
@@ -68,14 +68,14 @@ export function tienda(listaDeProductos){
   })
 };
 
-const busqueda = () =>{
+const busqueda = (listaDeProductos) =>{
   console.log(inputBusqueda.value);
 
   if(inputBusqueda.value == ""){
-    tienda(listaProductos);
+    tienda(listaDeProductos);
   }else{
 
-    let tiendaFiltrada = listaProductos.filter( i => i.mueble.toLowerCase().includes(inputBusqueda.value.toLowerCase()) && i.carrito == false)
+    let tiendaFiltrada = listaDeProductos.filter( i => i.mueble.toLowerCase().includes(inputBusqueda.value.toLowerCase()) && i.carrito == false)
 
     navTienda.innerHTML = " "
     tiendaFiltrada.forEach(i => {
@@ -92,7 +92,7 @@ const busqueda = () =>{
 
       const botonAñadirCarro = document.getElementById(`B${i.id}`);
       botonAñadirCarro.addEventListener("click",()=>{
-      añadir_aCarrito(i.id, i.mueble);
+      añadir_aCarrito(i.id, listaDeProductos);
       })
     })
     tiendaFiltrada.forEach(i =>{
@@ -112,17 +112,17 @@ let cantidadEnCarrito = document.getElementById("contadorCarrito");
 
 // llamo al boton x su id y le agrego un listener
 let inputBusqueda = document.getElementById("inBusqueda");
-inputBusqueda.addEventListener("input", () => {
-  busqueda();
-})
+
 
 //codigo
 const fetcheado = async() =>{
   try {
     const fetchDeBD = await fetch("js/stock.json");
     const listBD =await fetchDeBD.json();
+    inputBusqueda.addEventListener("input", () => {
+      busqueda(listBD);
+    })
     tienda(listBD);
-    return listBD;
   } catch (error) {
     console.log(error);
   }
