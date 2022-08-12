@@ -1,5 +1,9 @@
 import{carrito,tienda,comprarCarrito,contadorParaBotonCarrito,listBD} from "./jsmueblespablo.js" ;
 import { abrirImagen } from "./modalImgs.js";
+//vars
+const botonCarrito = document.getElementById("botonCarrito");
+const bodyHtml = document.getElementsByTagName("body");
+let modalCarrito = document.createElement("div");
 
 function quitarElementoCarrito(i){
     let ItemAQuitar = carrito.find(x => x.id == i.id);//encontramos elemento en el carrito x su id
@@ -57,10 +61,6 @@ export function hacerListaCarrito(){
         });
     } );
 };
-
-const botonCarrito = document.getElementById("botonCarrito");
-const bodyHtml = document.getElementsByTagName("body");
-let modalCarrito = document.createElement("div");
 
 //evento para abrir y cerrar el carrito x un botón
 botonCarrito.addEventListener("click", () =>{
