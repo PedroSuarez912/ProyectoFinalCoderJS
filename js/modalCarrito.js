@@ -1,14 +1,13 @@
-import{carrito,tienda,comprarCarrito,contadorParaBotonCarrito} from "./jsmueblespablo.js" ;
+import{carrito,tienda,comprarCarrito,contadorParaBotonCarrito,listBD} from "./jsmueblespablo.js" ;
 import { abrirImagen } from "./modalImgs.js";
-import{listaProductos} from "./stock.js" ;
 
-function quitarElementoCarrito(i) {
+function quitarElementoCarrito(i){
     let ItemAQuitar = carrito.find(x => x.id == i.id);//encontramos elemento en el carrito x su id
     ItemAQuitar.carrito = false;
     let indiceItem = carrito.indexOf(ItemAQuitar);//le sacamos su indice
     carrito.splice(indiceItem, 1);//eliminamos el objeto q se encuentre en esa posición del array
     hacerListaCarrito();//volvemos a cargar el modal
-    tienda(listaProductos);//update a la tienda
+    tienda(listBD);//update a la tienda
     contadorParaBotonCarrito();//actualiza el contador del carrito
 };
 
@@ -30,7 +29,6 @@ export function hacerListaCarrito(){
     });
 
     let carrito_listado = document.getElementById("carrito_en_si");
-
     //lista items del carrito
     carrito_listado.innerHTML=" "
     carrito.forEach( i => {

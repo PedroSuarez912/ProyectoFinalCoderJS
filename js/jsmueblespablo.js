@@ -1,4 +1,3 @@
-/* import {listaProductos,} from "./stock.js"; */
 import{hacerListaCarrito,modalCarrito} from "./modalCarrito.js";
 import { abrirImagen } from "./modalImgs.js";
 //funciones a utilizar
@@ -24,7 +23,7 @@ export function comprarCarrito(){
 
 function añadir_aCarrito(id,listaDeProductos){
   let carriteado = listaDeProductos.find(i => i.id == id);
-  carriteado.meterEnCarrito();
+  carriteado.carrito = true;
   carrito.push(carriteado);
   tienda(listaDeProductos);
   if(modalCarrito.className == "modalAbierto"){
@@ -69,14 +68,11 @@ export function tienda(listaDeProductos){
 };
 
 const busqueda = (listaDeProductos) =>{
-  console.log(inputBusqueda.value);
-
   if(inputBusqueda.value == ""){
     tienda(listaDeProductos);
   }else{
-
     let tiendaFiltrada = listaDeProductos.filter( i => i.mueble.toLowerCase().includes(inputBusqueda.value.toLowerCase()) && i.carrito == false)
-
+//dom
     navTienda.innerHTML = " "
     tiendaFiltrada.forEach(i => {
       let carta = document.createElement("div");
@@ -89,7 +85,7 @@ const busqueda = (listaDeProductos) =>{
               <button id="B${i.id}" class="botonDeCarta">Añadir al carrito!</button>
           </div>`;
       navTienda.appendChild(carta);
-
+//evento añadir carrito
       const botonAñadirCarro = document.getElementById(`B${i.id}`);
       botonAñadirCarro.addEventListener("click",()=>{
       añadir_aCarrito(i.id, listaDeProductos);
@@ -107,7 +103,7 @@ const busqueda = (listaDeProductos) =>{
 //vars a utilizar
 let carrito = [];
 const navTienda =  document.getElementById("nav");
-
+let listBD = [];
 let cantidadEnCarrito = document.getElementById("contadorCarrito"); 
 
 // llamo al boton x su id y le agrego un listener
@@ -117,17 +113,24 @@ let inputBusqueda = document.getElementById("inBusqueda");
 //codigo
 const fetcheado = async() =>{
   try {
-    const fetchDeBD = await fetch("js/stock.json");
-    const listBD =await fetchDeBD.json();
-    inputBusqueda.addEventListener("input", () => {
-      busqueda(listBD);
-    })
-    tienda(listBD);
-  } catch (error) {
+    const fetchDeBD = await fetch("js/stock.json");//peticion(promise)
+    listBD =await fetchDeBD.json();//continuacion de promise
+    return listBD
+
+  }catch (error) {
     console.log(error);
   }
-}
+};
 
-fetcheado();
+listBD = fetcheado();
 
-export{carrito,cantidadEnCarrito};
+listBD.then(listBD => {
+  //render de tienda inicial
+  tienda(listBD);
+  //busqueda
+  inputBusqueda.addEventListener("input", () => {
+    busqueda(listBD);
+  });
+});
+
+export{carrito,cantidadEnCarrito,listBD};
