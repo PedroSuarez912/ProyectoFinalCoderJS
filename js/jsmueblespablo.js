@@ -1,4 +1,4 @@
-import{hacerListaCarrito,modalCarrito} from "./modalCarrito.js";
+import{ hacerListaCarrito,modalCarrito} from "./modalCarrito.js";
 import { abrirImagen } from "./modalImgs.js";
 //vars
 let carrito = [];
