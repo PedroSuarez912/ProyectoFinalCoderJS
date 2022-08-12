@@ -16,7 +16,6 @@ export function abrirImagen(i){
     modalDeImg.classList.add("conteinerconteiner_modalDeImg");
     bodyHtml[0].appendChild(modalDeImg);
     let botonSalirModal = document.getElementById(`boton${i.id}SalirModal`);
-    console.log(botonSalirModal);
     botonSalirModal.addEventListener("click", ()=>{
         bodyHtml[0].removeChild(modalDeImg);
     });

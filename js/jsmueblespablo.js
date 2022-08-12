@@ -1,4 +1,3 @@
-import {listaProductos,} from "./stock.js";
 import{hacerListaCarrito,modalCarrito} from "./modalCarrito.js";
 import { abrirImagen } from "./modalImgs.js";
 //funciones a utilizar
@@ -22,11 +21,11 @@ export function comprarCarrito(){
   contadorParaBotonCarrito();
 };
 
-function añadir_aCarrito(id){
-  let carriteado = listaProductos.find(i => i.id == id);
-  carriteado.meterEnCarrito();
+function añadir_aCarrito(id,listaDeProductos){
+  let carriteado = listaDeProductos.find(i => i.id == id);
+  carriteado.carrito = true;
   carrito.push(carriteado);
-  tienda(listaProductos);
+  tienda(listaDeProductos);
   if(modalCarrito.className == "modalAbierto"){
     hacerListaCarrito();}
   contadorParaBotonCarrito();
@@ -58,7 +57,7 @@ export function tienda(listaDeProductos){
   productosEnVenta.forEach((i) => {
     const botonAñadirCarro = document.getElementById(`B${i.id}A`);
     botonAñadirCarro.addEventListener("click",()=>{
-      añadir_aCarrito(i.id, i.mueble)
+      añadir_aCarrito(i.id, listaDeProductos)
       Toastify({
         duration:1200,
         text: "Añadiste un producto a tu carrito!",
@@ -68,15 +67,12 @@ export function tienda(listaDeProductos){
   })
 };
 
-const busqueda = () =>{
-  console.log(inputBusqueda.value);
-
+const busqueda = (listaDeProductos) =>{
   if(inputBusqueda.value == ""){
-    tienda(listaProductos);
+    tienda(listaDeProductos);
   }else{
-
-    let tiendaFiltrada = listaProductos.filter( i => i.mueble.toLowerCase().includes(inputBusqueda.value.toLowerCase()) && i.carrito == false)
-
+    let tiendaFiltrada = listaDeProductos.filter( i => i.mueble.toLowerCase().includes(inputBusqueda.value.toLowerCase()) && i.carrito == false)
+//dom
     navTienda.innerHTML = " "
     tiendaFiltrada.forEach(i => {
       let carta = document.createElement("div");
@@ -89,10 +85,10 @@ const busqueda = () =>{
               <button id="B${i.id}" class="botonDeCarta">Añadir al carrito!</button>
           </div>`;
       navTienda.appendChild(carta);
-
+//evento añadir carrito
       const botonAñadirCarro = document.getElementById(`B${i.id}`);
       botonAñadirCarro.addEventListener("click",()=>{
-      añadir_aCarrito(i.id, i.mueble);
+      añadir_aCarrito(i.id, listaDeProductos);
       })
     })
     tiendaFiltrada.forEach(i =>{
@@ -107,27 +103,33 @@ const busqueda = () =>{
 //vars a utilizar
 let carrito = [];
 const navTienda =  document.getElementById("nav");
-
+let listBD = [];
 let cantidadEnCarrito = document.getElementById("contadorCarrito"); 
 
 // llamo al boton x su id y le agrego un listener
 let inputBusqueda = document.getElementById("inBusqueda");
-inputBusqueda.addEventListener("input", () => {
-  busqueda();
-})
+
 
 //codigo
 const fetcheado = async() =>{
   try {
-    const fetchDeBD = await fetch("js/stock.json");
-    const listBD =await fetchDeBD.json();
-    tienda(listBD);
-    return listBD;
+    const fetchDeBD = await fetch("js/stock.json");//peticion(promise)
+    listBD =await fetchDeBD.json();//continuacion de promise
+    return listBD
   } catch (error) {
     console.log(error);
   }
-}
+};
 
-fetcheado();
+listBD = fetcheado();
 
-export{carrito,cantidadEnCarrito};
+listBD.then(listBD => {
+  //render de tienda inicial
+  tienda(listBD);
+  //busqueda
+  inputBusqueda.addEventListener("input", () => {
+    busqueda(listBD);
+  });
+});
+
+export{carrito,cantidadEnCarrito,listBD};
