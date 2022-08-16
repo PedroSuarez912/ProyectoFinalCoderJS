@@ -1,4 +1,4 @@
-import{ hacerListaCarrito,modalCarrito} from "./modalCarrito.js";
+import{ hacerListaCarrito,modalCarrito, reduceCasero} from "./modalCarrito.js";
 import { abrirImagen } from "./modalImgs.js";
 //vars
 let carrito = [];
@@ -47,12 +47,12 @@ export function tienda(listaDeProductos){
     let carta = document.createElement("div");
     carta.className = "contenedor-carta";
     carta.innerHTML = `
-        <div class="carta">
-            <h2>${i.mueble}</h2>
-            <img id="img${i.id}" src=${i.imagen} alt="">
-            <p>${i.precio}<p>
-            <button class="botonDeCarta"id="B${i.id}A">Añadir al carrito!</button>
-        </div>`;
+      <div class="carta">
+          <h2>${i.mueble}</h2>
+          <img id="img${i.id}" src=${i.imagen} alt="">
+          <p>${i.precio}<p>
+          <button class="botonDeCarta"id="B${i.id}A">Añadir al carrito!</button>
+      </div>`;
     navTienda.appendChild(carta);
 
     let imgClickeable = document.getElementById(`img${i.id}`);
@@ -64,7 +64,8 @@ export function tienda(listaDeProductos){
   productosEnVenta.forEach((i) => {
     const botonAñadirCarro = document.getElementById(`B${i.id}A`);
     botonAñadirCarro.addEventListener("click",()=>{
-      añadir_aCarrito(i.id, listaDeProductos)
+      añadir_aCarrito(i.id, listaDeProductos);
+      reduceCasero();
       Toastify({
         duration:1200,
         text: "Añadiste un producto a tu carrito!",
@@ -106,11 +107,11 @@ const busqueda = (listaDeProductos) =>{
     });
   };
 };
+
 const fetcheado = async() =>{
   try {
     const fetchDeBD = await fetch("js/stock.json");//peticion(promise)
-    listBD =await fetchDeBD.json();//continuacion de promise
-    return listBD
+    return listBD =await fetchDeBD.json();//continuacion de promise
   }catch (error) {
     console.log(error);
   }
