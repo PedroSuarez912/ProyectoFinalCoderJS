@@ -1,4 +1,4 @@
-import{ hacerListaCarrito,modalCarrito, reduceCasero} from "./modalCarrito.js";
+import{ hacerListaCarrito,modalCarrito, reduceCasero,bodyHtml} from "./modalCarrito.js";
 import { abrirImagen } from "./modalImgs.js";
 //vars
 let carrito = [];
@@ -61,11 +61,13 @@ export function tienda(listaDeProductos){
     });
   })
 
+  //boton añadir al carrito 
   productosEnVenta.forEach((i) => {
     const botonAñadirCarro = document.getElementById(`B${i.id}A`);
     botonAñadirCarro.addEventListener("click",()=>{
       añadir_aCarrito(i.id, listaDeProductos);
       reduceCasero();
+      hacerListaCarrito();
       Toastify({
         duration:1200,
         text: "Añadiste un producto a tu carrito!",
@@ -95,10 +97,14 @@ const busqueda = (listaDeProductos) =>{
       navTienda.appendChild(carta);
 //evento añadir carrito
       const botonAñadirCarro = document.getElementById(`B${i.id}`);
+      //boton añadir al carrito
       botonAñadirCarro.addEventListener("click",()=>{
       añadir_aCarrito(i.id, listaDeProductos);
+      reduceCasero();
+      hacerListaCarrito();
       })
     })
+    //abrir img 
     tiendaFiltrada.forEach(i =>{
       let  imgClickeablBusqueda = document.getElementById(`img${i.id}`);
       imgClickeablBusqueda.addEventListener("click",()=>{
@@ -113,7 +119,16 @@ const fetcheado = async() =>{
     const fetchDeBD = await fetch("js/stock.json");//peticion(promise)
     return listBD =await fetchDeBD.json();//continuacion de promise
   }catch (error) {
-    console.log(error);
+    let modalError = document.createElement("div");
+    modalError.innerHTML = `
+      <div class="error">
+        <h2>Lo sentimos!</h2>
+        <p>a ocurrido un error</p>
+        <p>precisamente "${error}"</p>
+      </div>
+    `;
+    modalError.className = "ModalError";
+    bodyHtml[0].appendChild(modalError);
   }
 };
 //codigo

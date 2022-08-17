@@ -6,6 +6,7 @@ const bodyHtml = document.getElementsByTagName("body");
 let modalCarrito = document.createElement("div");
 /* let totalCarrito = carrito.reduce((start,elemento) => start + elemento.precio, 0); */
 let precioTotalCarrito = 0;
+//tuve que hacerle una función pq no me andaba con .reduce() xd
 export function reduceCasero(){
     precioTotalCarrito = 0;
     if (carrito.lenght == 0) {
@@ -13,13 +14,9 @@ export function reduceCasero(){
     }else{
     for(let i of carrito){
         console.log(i.precio);
-        precioTotalCarrito += parseInt(i.precio);
+        precioTotalCarrito += parseInt(i.precio);}
     }
-    }
-    console.log(precioTotalCarrito);
 }
-
-reduceCasero();
 
 function quitarElementoCarrito(i){
     let ItemAQuitar = carrito.find(x => x.id == i.id);//encontramos elemento en el carrito x su id
@@ -34,7 +31,6 @@ function quitarElementoCarrito(i){
 
 export function hacerListaCarrito(){
     //DOM del modal 
-    console.log(carrito);
     modalCarrito.innerHTML = `
     <div class="contenedor_titulo_carrito">
         <div class="titulo_carrito"> CARRITO </div>
@@ -87,11 +83,10 @@ botonCarrito.addEventListener("click", () =>{
         modalCarrito.classList.toggle("modalAbierto");  
         bodyHtml[0].removeChild(modalCarrito);
     }else{
-        bodyHtml[0].appendChild(modalCarrito);    
+        bodyHtml[0].appendChild(modalCarrito);   
         hacerListaCarrito();
         modalCarrito.classList.toggle("modalAbierto");
     }
 });
 
-reduceCasero()
 export{modalCarrito,bodyHtml};
