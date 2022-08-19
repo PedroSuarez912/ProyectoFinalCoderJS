@@ -35,6 +35,7 @@ export function hacerListaCarrito(){
     <div class="contenedor_titulo_carrito">
         <div class="titulo_carrito"> CARRITO </div>
         <div class="total">total=${precioTotalCarrito}$</div>
+        <img src="./fotos/cerrarIcono.png" alt="" class="salirCarrito" id="salirCarrito">
         <button id="boton_comprar_carrito">Comprar carrito</button>
     </div>
     <div id="carrito_en_si">
@@ -45,6 +46,10 @@ export function hacerListaCarrito(){
     botonComprarCarrito.addEventListener("click",()=>{
         comprarCarrito(carrito);
         hacerListaCarrito();
+    });
+    let botonSalirCarrito = document.getElementById("salirCarrito");
+    botonSalirCarrito.addEventListener("click", () =>{
+        modalCarrito.classList.remove("modalAbierto")
     });
 
     let carrito_listado = document.getElementById("carrito_en_si");

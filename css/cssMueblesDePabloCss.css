@@ -282,6 +282,18 @@
   bottom: 95px;
   padding: 5px 0.5em 5px 10px;
 }
+.modalAbierto .salirCarrito {
+  position: absolute;
+  top: 40px;
+  right: 30px;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 50%;
+}
+.modalAbierto .salirCarrito:hover {
+  transition: ease 0.35s;
+  background-color: rgb(192, 72, 72);
+}
 
 .divCarrito {
   height: 70px;

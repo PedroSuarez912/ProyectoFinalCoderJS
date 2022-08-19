@@ -308,6 +308,18 @@
         bottom:95px;
         padding: 5px 0.5em 5px 10px;
     }
+    .salirCarrito{
+        position: absolute;
+        top: 40px;
+        right: 30px;
+        cursor: pointer;
+        background-color: white;
+        border-radius: 50%;
+    }
+    .salirCarrito:hover{
+        transition: ease 0.35s;
+        background-color: rgb(192, 72, 72);
+    }
 }
 
 //items del modal
@@ -396,7 +408,7 @@
         }
     }
 }
-//en proceso
+
 .restauraciones{
     background-color: bisque;
     height: 590px;
