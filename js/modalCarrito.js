@@ -63,7 +63,7 @@ export function hacerListaCarrito(){
                 <img id="imgCarrito${i.id}" src="${i.imagen}" alt="">
                 <div>
                     <p>${i.mueble}</p>
-                    <p>${i.precio}</p>
+                    <p>${i.precio}$</p>
                 </div>
                 <button id="${i.id}Quitar">X</button>
         `;

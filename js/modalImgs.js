@@ -9,7 +9,7 @@ export function abrirImagen(i){
             <img id="boton${i.id}SalirModal" class="botonCerrarModal" id="boton${i.id}SalirModal" src= "./fotos/cerrarIcono.png" alt="">
         </div>
         <img class="producto"id="img${i.id}" src=${i.imagen} alt="">
-        <p>${i.precio}<p>
+        <p>${i.precio}$<p>
     </div>
         
         `;

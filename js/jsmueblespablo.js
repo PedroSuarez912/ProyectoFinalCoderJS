@@ -53,7 +53,7 @@ export function tienda(listaDeProductos){
       <div class="carta">
           <h2>${i.mueble}</h2>
           <img id="img${i.id}" src=${i.imagen} alt="">
-          <p>${i.precio}<p>
+          <p>${i.precio}$<p>
           <button class="botonDeCarta"id="B${i.id}A">Añadir al carrito!</button>
       </div>`;
     navTienda.appendChild(carta);
@@ -94,7 +94,7 @@ const busqueda = (listaDeProductos) =>{
           <div class="carta">
               <h2>${i.mueble}</h2>
               <img id="img${i.id}" src=${i.imagen} alt="">
-              <p>${i.precio}<p>
+              <p>${i.precio}$<p>
               <button id="B${i.id}" class="botonDeCarta">Añadir al carrito!</button>
           </div>`;
       navTienda.appendChild(carta);
