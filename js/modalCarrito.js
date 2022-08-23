@@ -47,9 +47,11 @@ export function hacerListaCarrito(){
         comprarCarrito(carrito);
         hacerListaCarrito();
     });
+
     let botonSalirCarrito = document.getElementById("salirCarrito");
     botonSalirCarrito.addEventListener("click", () =>{
         modalCarrito.classList.remove("modalAbierto")
+        bodyHtml[0].removeChild(modalCarrito)
     });
 
     let carrito_listado = document.getElementById("carrito_en_si");
