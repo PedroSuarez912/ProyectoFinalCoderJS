@@ -8,14 +8,14 @@ let modalCarrito = document.createElement("div");
 let precioTotalCarrito = 0;
 //tuve que hacerle una función pq no me andaba con .reduce() xd
 export function reduceCasero(){
-    precioTotalCarrito = 0;
-    if (carrito.lenght == 0) {
-        precioTotalCarrito = 0;
-    }else{
-    for(let i of carrito){
-        console.log(i.precio);
-        precioTotalCarrito += parseInt(i.precio);}
-    }
+  precioTotalCarrito = 0;
+  if (carrito.lenght == 0) {
+      precioTotalCarrito = 0;
+  }else{
+  for(let i of carrito){
+      precioTotalCarrito += parseInt(i.precio);}
+  }
+  return precioTotalCarrito
 }
 
 function quitarElementoCarrito(i){
@@ -23,6 +23,7 @@ function quitarElementoCarrito(i){
     ItemAQuitar.carrito = false;
     let indiceItem = carrito.indexOf(ItemAQuitar);//le sacamos su indice
     carrito.splice(indiceItem, 1);//eliminamos el objeto q se encuentre en esa posición del array
+    localStorage.setItem("carrito",JSON.stringify(carrito))
     hacerListaCarrito();//volvemos a cargar el modal
     tienda(listBD);//update a la tienda
     contadorParaBotonCarrito();//actualiza el contador del carrito
@@ -34,7 +35,7 @@ export function hacerListaCarrito(){
     modalCarrito.innerHTML = `
     <div class="contenedor_titulo_carrito">
         <div class="titulo_carrito"> CARRITO </div>
-        <div class="total">total=${precioTotalCarrito}$</div>
+        <div class="total">total=${reduceCasero()}$</div>
         <img src="./fotos/cerrarIcono.png" alt="" class="salirCarrito" id="salirCarrito">
         <button id="boton_comprar_carrito">Comprar carrito</button>
     </div>

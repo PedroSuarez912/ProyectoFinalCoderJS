@@ -306,6 +306,7 @@
   align-items: center;
   margin: 5px 0px;
   background-color: #cd9cf2;
+  overflow: auto;
 }
 .divCarrito p {
   text-align: center;
@@ -521,6 +522,7 @@
           text-decoration: underline black;
 }
 .ubi .conteinerTxt_Maps:hover {
+  box-sizing: border-box;
   border: 2px solid black;
   background-color: rgb(255, 155, 34);
 }

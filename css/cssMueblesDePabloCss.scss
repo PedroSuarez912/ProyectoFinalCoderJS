@@ -550,6 +550,7 @@
         }
     }
     .conteinerTxt_Maps:hover{
+        box-sizing: border-box;
         border: 2px solid black;
         background-color: rgb(255, 155, 34);
     }
