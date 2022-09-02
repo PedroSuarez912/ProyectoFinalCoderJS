@@ -10,9 +10,11 @@ let inputBusqueda = document.getElementById("inBusqueda");
 //funciones a utilizar
 export function contadorParaBotonCarrito(){
   if(JSON.parse(localStorage.carrito).length != 0){
+    console.log("entro en el if ");
     cantidadEnCarrito.innerText = JSON.parse(localStorage.carrito).length;
     cantidadEnCarrito.classList.remove("puntitoOculto");
-  }else if(JSON.parse(localStorage.carrito).length == 0){
+  }else if(JSON.parse(localStorage.carrito).length == 0 ){
+    console.log("entro en el else");
     cantidadEnCarrito.classList.toggle("puntitoOculto");
   }
 };
@@ -25,7 +27,7 @@ export function comprarCarrito(){
     confirmButtonText:"cerrar",
   });
   carrito = [];
-  localStorage.setItem("carrito",JSON.stringify(carrito))
+  localStorage.setItem("carrito",JSON.stringify(carrito));
   reduceCasero();
   hacerListaCarrito();
   contadorParaBotonCarrito();
@@ -102,7 +104,24 @@ const busqueda = (listaDeProductos) =>{
   if(inputBusqueda.value == ""){
     tienda(listaDeProductos);
   }else{
-    let tiendaFiltrada = listaDeProductos.filter( i => i.mueble.toLowerCase().includes(inputBusqueda.value.toLowerCase()) && i.carrito == false)
+    let tiendaFiltrada = [], push = true;
+    //////////////////////////
+    if(localStorage?.carrito){
+      let savedCarrito = JSON.parse(localStorage?.carrito);
+
+      listaDeProductos.forEach((item)=>{
+        savedCarrito.forEach((saved) =>{
+          if(saved.id ===item.id) push=false
+        })
+        if(push) tiendaFiltrada.push(item)
+        push = true;
+      });
+
+      tiendaFiltrada = tiendaFiltrada.filter( i => i.mueble.toLowerCase().includes(inputBusqueda.value.toLowerCase()) && i.carrito == false);
+    }else{
+      tiendaFiltrada = listaDeProductos.filter( i => i.mueble.toLowerCase().includes(inputBusqueda.value.toLowerCase()) && i.carrito == false);
+    }
+    //////////////////
     //dom
     navTienda.innerHTML = " "
     tiendaFiltrada.forEach(i => {
@@ -157,6 +176,7 @@ listBD = fetcheado();
 listBD.then(listBD => {
   //render de tienda inicial
   tienda(listBD);
+  contadorParaBotonCarrito();
   //busqueda
   inputBusqueda.addEventListener("input", () => {
     busqueda(listBD);
